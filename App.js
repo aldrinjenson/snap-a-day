@@ -20,8 +20,8 @@ const theme = {
 export default function App() {
   return (
     <PaperProvider theme={theme}>
-      {/* <Signin /> */}
-      <SignUp />
+      <Signin />
+      {/* <SignUp /> */}
     </PaperProvider>
   );
 }

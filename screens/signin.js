@@ -1,11 +1,25 @@
 import { useState } from "react";
 import { StyleSheet, View } from "react-native";
 import { Button, Text, TextInput } from "react-native-paper";
+import { supabase } from "../utils";
 
 const Signin = () => {
-  const [email, setEmail] = useState("");
+  const [email, setEmail] = useState("aldrinjenson@gmail.com");
   const [password, setPassword] = useState("");
-  const handleLogin = async () => {};
+
+  const handleLogin = async () => {
+    const { data, error } = await supabase.auth.signInWithPassword({
+      email,
+      password,
+    });
+    console.log(data);
+    if (data) {
+      console.log("Success");
+    } else {
+      console.log("error in logging in");
+      console.log(error);
+    }
+  };
   return (
     <View>
       <Text variant='displayLarge'>Sign In</Text>
