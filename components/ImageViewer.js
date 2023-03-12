@@ -6,10 +6,12 @@ const ImageViewer = ({ imgUrl }) => {
 
   return (
     <View
-      style={{
-        // maxWidth: "90%",
-        maxHeight: "90%",
-      }}
+      style={
+        {
+          // maxWidth: "90%",
+          // maxHeight: "90%",
+        }
+      }
     >
       <Image
         // style={styles.tinyLogo}
