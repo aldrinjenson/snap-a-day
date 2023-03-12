@@ -1,8 +1,17 @@
 import * as React from "react";
+import { Share } from "react-native";
 import { Avatar, Button, Card, Text } from "react-native-paper";
 
 const VideoCard = ({ imgUrl, date }) => {
-  console.log(imgUrl);
+  const shareData = async () => {
+    try {
+      await Share.share({
+        message: "This is the demo text",
+      });
+    } catch (error) {
+      alert(error.message);
+    }
+  };
   return (
     <Card style={{ paddingRight: 20 }}>
       <Card.Content>
@@ -10,8 +19,8 @@ const VideoCard = ({ imgUrl, date }) => {
       </Card.Content>
       <Card.Cover source={{ uri: "https://picsum.photos/700" }} />
       <Card.Actions>
-        <Button>Cancel</Button>
-        <Button>Ok</Button>
+        <Button>Download</Button>
+        <Button onPress={shareData}>Share</Button>
       </Card.Actions>
     </Card>
   );

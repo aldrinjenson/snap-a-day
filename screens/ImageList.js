@@ -1,10 +1,10 @@
 import { FlatList, ScrollView, StyleSheet, View } from "react-native";
 import { supabase } from "../utils";
 import ImageCard from "../components/ImageCard";
-import { Text } from "react-native-paper";
+import { FAB, Text } from "react-native-paper";
 import VideoCard from "../components/videoCard";
 
-const ImageList = () => {
+const ImageList = ({ navigation }) => {
   // const getImages = async () => {
   //   const { data, error } = await supabase.storage.from("snaps-bucket").list({
   //     limit: 100,
@@ -86,24 +86,45 @@ const ImageList = () => {
 
   return (
     <View style={{ padding: 10 }}>
-      <Text>Checkout your memories</Text>
-      <FlatList
-        horizontal={true}
-        data={videoList}
-        renderItem={({ item }) => (
-          <VideoCard imgUrl={item.imgUrl} date={item.date} />
-        )}
-        keyExtractor={(item) => item.id}
-      />
       <ScrollView>
+        <Text variant='displaySmall'>Track Your Memories</Text>
+        <FlatList
+          horizontal={true}
+          data={videoList}
+          renderItem={({ item }) => (
+            <VideoCard
+              key={item.imgUrl}
+              imgUrl={item.imgUrl}
+              date={item.date}
+            />
+          )}
+          keyExtractor={(item) => item.id}
+        />
+
+        <Text variant='displaySmall'>Remember old Snaps</Text>
         {images.map((img, index) => (
           <ImageCard key={index} imgUrl={img.imgUrl} date={img.date} />
         ))}
       </ScrollView>
+
+      <FAB
+        icon='camera'
+        style={styles.fab}
+        onPress={() => navigation.navigate("camera")}
+      />
     </View>
   );
 };
 
 export default ImageList;
 
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+  fab: {
+    position: "absolute",
+    margin: 16,
+    padding: 5,
+    right: 10,
+    bottom: 10,
+    zIndex: 99,
+  },
+});
