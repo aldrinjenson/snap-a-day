@@ -1,30 +1,33 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
-import LandingScreen from './screens/LandingScreen';
-import HomeScreen from './screens/HomeScreen';
-import { NavigationContainer } from '@react-navigation/native';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { StatusBar } from "expo-status-bar";
+import { StyleSheet, Text, View } from "react-native";
+import Signin from "./screens/signin";
+import {
+  MD3LightTheme as DefaultTheme,
+  Provider as PaperProvider,
+} from "react-native-paper";
 
-
-const Stack = createNativeStackNavigator();
+const theme = {
+  ...DefaultTheme,
+  colors: {
+    ...DefaultTheme.colors,
+    primary: "tomato",
+    secondary: "yellow",
+  },
+};
 
 export default function App() {
   return (
-    <NavigationContainer>
-      <Stack.Navigator>
-        <Stack.Screen name="landing" component={LandingScreen} />
-        <Stack.Screen name="home" component={HomeScreen} />
-      </Stack.Navigator>
-      <LandingScreen />
-    </NavigationContainer>
+    <PaperProvider theme={theme}>
+      <Signin />
+    </PaperProvider>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+    backgroundColor: "#fff",
+    alignItems: "center",
+    justifyContent: "center",
   },
 });
