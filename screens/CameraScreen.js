@@ -2,7 +2,7 @@ import { StyleSheet, Text, View, Image } from "react-native";
 import React, { useState, useEffect, useRef } from "react";
 import { Camera, CameraType } from "expo-camera";
 import * as MediaLibrary from "expo-media-library";
-import Button from "../Components/Button";
+import Button from "../components/Button";
 import { supabase } from "../utils";
 
 const CameraScreen = () => {

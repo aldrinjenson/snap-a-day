@@ -1,6 +1,6 @@
 import { FlatList, ScrollView, StyleSheet, Button, View } from "react-native";
 import { supabase } from "../utils";
-import ImageCard from "../Components/ImageCard";
+import ImageCard from "../components/ImageCard";
 import { FAB, Text } from "react-native-paper";
 import VideoCard from "../components/videoCard";
 import * as Notifications from "expo-notifications";
