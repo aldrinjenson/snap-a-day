@@ -12,6 +12,7 @@ import CameraScreen from "./screens/CameraScreen";
 
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import HomeScreen from "./screens/HomeScreen";
 
 
 const Stack = createNativeStackNavigator();
@@ -27,14 +28,16 @@ const theme = {
 
 export default function App() {
   return (
+    <CameraScreen />
+    // <PaperProvider theme={theme}>
+    //   <NavigationContainer>
+    //     <Stack.Navigator>
+    //       <Stack.Screen name="sigin" component={Signin} />
+    //       <Stack.Screen name="home" component={HomeScreen} />
 
-    <PaperProvider theme={theme}>
-      <NavigationContainer>
-        <Stack.Navigator>
-          <Stack.Screen name="sigin" component={Signin} />
-        </Stack.Navigator>
-      </NavigationContainer>
-    </PaperProvider>
+    //     </Stack.Navigator>
+    //   </NavigationContainer>
+    // </PaperProvider>
 
   );
 }
