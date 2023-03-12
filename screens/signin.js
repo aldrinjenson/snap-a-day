@@ -1,9 +1,9 @@
 import { useState } from "react";
-import { StyleSheet, View } from "react-native";
+import { StyleSheet, View, SafeAreaView } from "react-native";
 import { Button, Text, TextInput } from "react-native-paper";
 import { supabase } from "../utils";
 
-const Signin = (navigation) => {
+const Signin = ({ navigation }) => {
   const [email, setEmail] = useState("aldrinjenson@gmail.com");
   const [password, setPassword] = useState("123456");
 
@@ -22,7 +22,7 @@ const Signin = (navigation) => {
     }
   };
   return (
-    <View>
+    <SafeAreaView style={{ paddingTop: '8%', paddingHorizontal: '3%' }}>
       <Text variant='displayLarge'>Sign In</Text>
       <TextInput
         label='Email'
@@ -39,8 +39,8 @@ const Signin = (navigation) => {
       <Button icon='login' mode='contained' onPress={handleLogin}>
         Press me
       </Button>
-      <Text>New User? Create an account here</Text>
-    </View>
+      <Text onPress={() => navigation.navigate('signup')}>New User? Create an account here</Text>
+    </SafeAreaView>
   );
 };
 

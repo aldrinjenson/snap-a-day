@@ -1,9 +1,9 @@
 import { useState } from "react";
-import { StyleSheet, View } from "react-native";
+import { StyleSheet, View, SafeAreaView } from "react-native";
 import { Button, Text, TextInput } from "react-native-paper";
 import { supabase } from "../utils";
 
-const SignUp = () => {
+const SignUp = ({ navigation }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
@@ -19,6 +19,7 @@ const SignUp = () => {
     console.log(data);
     if (data) {
       console.log("Success");
+      navigation.navigate('home')
     } else {
       console.log("error in Signing up");
       console.log(error);
@@ -26,7 +27,7 @@ const SignUp = () => {
   };
 
   return (
-    <View>
+    <SafeAreaView style={{ paddingTop: '8%', paddingHorizontal: '3%' }}>
       <Text variant='displayLarge'>Sign Up</Text>
       <TextInput
         label='Email'
@@ -50,8 +51,8 @@ const SignUp = () => {
       <Button icon='login' mode='contained' onPress={handleSignup}>
         Press me
       </Button>
-      <Text>New User? Create an account here</Text>
-    </View>
+      <Text onPress={() => navigation.navigate('signin')}>Already have an account?Sign in here</Text>
+    </SafeAreaView>
   );
 };
 
