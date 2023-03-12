@@ -1,8 +1,21 @@
-import { FlatList, ScrollView, StyleSheet, View } from "react-native";
+import { FlatList, ScrollView, StyleSheet, Button, View } from "react-native";
 import { supabase } from "../utils";
 import ImageCard from "../components/ImageCard";
 import { FAB, Text } from "react-native-paper";
 import VideoCard from "../components/videoCard";
+import * as Notifications from "expo-notifications";
+
+const handleNotification = () => {
+  Notifications.scheduleNotificationAsync({
+    content: {
+      title: "Notification Title",
+      body: "Notification Body",
+    },
+    trigger: {
+      seconds: 5,
+    },
+  });
+};
 
 const ImageList = ({ navigation }) => {
   // const getImages = async () => {
@@ -86,6 +99,7 @@ const ImageList = ({ navigation }) => {
 
   return (
     <View style={{ padding: 10 }}>
+      <Button title='Trigger Notification' onPress={handleNotification} />
       <ScrollView>
         <Text variant='displaySmall'>Track Your Memories</Text>
         <FlatList
@@ -103,7 +117,12 @@ const ImageList = ({ navigation }) => {
 
         <Text variant='displaySmall'>Remember old Snaps</Text>
         {images.map((img, index) => (
-          <ImageCard key={index} imgUrl={img.imgUrl} date={img.date} />
+          <ImageCard
+            key={index}
+            imgUrl={img.imgUrl}
+            date={img.date}
+            navigation={navigation}
+          />
         ))}
       </ScrollView>
 

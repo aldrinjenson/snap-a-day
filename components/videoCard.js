@@ -1,3 +1,4 @@
+import { useNavigation } from "@react-navigation/native";
 import * as React from "react";
 import { Share } from "react-native";
 import { Avatar, Button, Card, Text } from "react-native-paper";
@@ -12,8 +13,13 @@ const VideoCard = ({ imgUrl, date }) => {
       alert(error.message);
     }
   };
+
+  const navigation = useNavigation();
   return (
-    <Card style={{ paddingRight: 20 }}>
+    <Card
+      style={{ paddingRight: 20 }}
+      onPress={() => navigation.navigate("video")}
+    >
       <Card.Content>
         <Text variant='bodyMedium'>{new Date(date).toLocaleDateString()}</Text>
       </Card.Content>
