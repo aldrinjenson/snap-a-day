@@ -36,7 +36,7 @@ const Signin = ({ navigation }) => {
         onChangeText={(e) => setPassword(e)}
         right={<TextInput.Icon icon='eye' />}
       />
-      <Button icon='login' mode='contained' onPress={handleLogin}>
+      <Button icon='login' mode='contained' style={{}} onPress={handleLogin}>
         Press me
       </Button>
       <Text onPress={() => navigation.navigate('signup')}>New User? Create an account here</Text>

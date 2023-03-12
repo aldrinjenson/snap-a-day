@@ -1,8 +1,8 @@
 import { FlatList, ScrollView, StyleSheet, View } from "react-native";
 import { supabase } from "../utils";
-import ImageCard from "../components/ImageCard";
+import ImageCard from "../Components/ImageCard";
 import { FAB, Text } from "react-native-paper";
-import VideoCard from "../components/videoCard";
+import VideoCard from "../Components/videoCard";
 
 const ImageList = ({ navigation }) => {
   // const getImages = async () => {
