@@ -15,7 +15,7 @@ const Signin = ({ navigation }) => {
     console.log(data);
     if (data) {
       console.log("Success");
-      navigation.navigate('home')
+      navigation.navigate("camera");
     } else {
       console.log("error in logging in");
       console.log(error);

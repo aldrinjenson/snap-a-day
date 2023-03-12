@@ -3,9 +3,9 @@ import { StyleSheet, View, SafeAreaView } from "react-native";
 import { Button, Text, TextInput } from "react-native-paper";
 import { supabase } from "../utils";
 
-const SignUp = ({ navigation }) => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+const SignUp = () => {
+  const [email, setEmail] = useState("aldrinjenson@gmail.com");
+  const [password, setPassword] = useState("123456");
   const [confirmPassword, setConfirmPassword] = useState("");
 
   const handleSignup = async () => {

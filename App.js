@@ -8,12 +8,11 @@ import {
 import SignUp from "./screens/signup";
 import LandingScreen from "./screens/LandingScreen";
 
-
-import { NavigationContainer } from '@react-navigation/native';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { NavigationContainer } from "@react-navigation/native";
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import ImageList from "./screens/ImageList";
 import HomeScreen from "./screens/HomeScreen";
 import VideoScreen from "./screens/VideoScreen";
-
 
 const Stack = createNativeStackNavigator();
 
@@ -30,15 +29,18 @@ export default function App() {
   return (
     <PaperProvider theme={theme}>
       <NavigationContainer>
-        <Stack.Navigator initialRouteName="signin">
-          <Stack.Screen name="signin" component={Signin} options={{ headerShown: false }} />
-          <Stack.Screen name="signup" component={SignUp} options={{ headerShown: false }} />
-          <Stack.Screen name="home" component={HomeScreen} />
-          <Stack.Screen name="video" component={VideoScreen} />
+        <Stack.Navigator>
+          <Stack.Screen
+            options={{ title: "Snap-A-Day" }}
+            name='images'
+            component={ImageList}
+          />
+          <Stack.Screen name='home' component={HomeScreen} />
+          <Stack.Screen name='sigin' component={Signin} />
+          <Stack.Screen name='camera' component={CameraScreen} />
         </Stack.Navigator>
       </NavigationContainer>
     </PaperProvider>
-
   );
 }
 
