@@ -4,6 +4,7 @@ import { Camera, CameraType } from "expo-camera";
 import * as MediaLibrary from "expo-media-library";
 import Button from "../components/Button";
 import { supabase } from "../utils";
+import { useNavigation } from "@react-navigation/native";
 
 const CameraScreen = () => {
   const [hasCameraPermission, setHasCameraPermission] = useState(null);
@@ -12,7 +13,7 @@ const CameraScreen = () => {
   const [type, setType] = useState(Camera.Constants.Type.back);
   const [flash, setFlash] = useState(Camera.Constants.FlashMode.off);
   const cameraRef = useRef(null);
-
+  const navigation = useNavigation();
   useEffect(() => {
     (async () => {
       MediaLibrary.requestPermissionsAsync();
@@ -48,6 +49,7 @@ const CameraScreen = () => {
 
         console.log("response = " + response);
         console.log(response);
+        navigation.navigate("images");
 
         // Get the URL of the uploaded photo
         const { publicURL } = supabase.storage

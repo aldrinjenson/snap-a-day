@@ -1,9 +1,11 @@
 import { FlatList, ScrollView, StyleSheet, Button, View } from "react-native";
 import { supabase } from "../utils";
 import ImageCard from "../components/ImageCard";
-import { FAB, Text } from "react-native-paper";
+import { Modal, Portal, FAB, Text, Provider } from "react-native-paper";
 import VideoCard from "../components/videoCard";
 import * as Notifications from "expo-notifications";
+import { useState } from "react";
+import ImageViewer from "../components/ImageViewer";
 
 const handleNotification = () => {
   Notifications.scheduleNotificationAsync({
@@ -18,19 +20,8 @@ const handleNotification = () => {
 };
 
 const ImageList = ({ navigation }) => {
-  // const getImages = async () => {
-  //   const { data, error } = await supabase.storage.from("snaps-bucket").list({
-  //     limit: 100,
-  //     offset: 0,
-  //     sortBy: { column: "name", order: "asc" },
-  //   });
-  //   console.log(data, error);
-  // };
-
-  // useEffect(() => {
-  //   getImages();
-  // }, []);
-
+  const [visible, setVisible] = useState(false);
+  const [chosenImg, setChosenImg] = useState("");
   const images = [
     {
       imgUrl: "https://source.unsplash.com/random?school",
@@ -96,10 +87,23 @@ const ImageList = ({ navigation }) => {
         "download.blender.org/peach/bigbuckbunny_movies/big_buck_bunny_480p_surround-fix.avi",
     },
   ];
+  const handleClick = (imgUrl) => {
+    setVisible(true);
+    setChosenImg(imgUrl);
+  };
 
   return (
     <View style={{ padding: 10 }}>
       <Button title='Trigger Notification' onPress={handleNotification} />
+      <Portal>
+        <Modal
+          visible={visible}
+          onDismiss={() => setVisible(false)}
+          contentContainerStyle={{ backgroundColor: "white", padding: 20 }}
+        >
+          <ImageViewer imgUrl={chosenImg} />
+        </Modal>
+      </Portal>
       <ScrollView>
         <Text variant='displaySmall'>Track Your Memories</Text>
         <FlatList
@@ -122,6 +126,7 @@ const ImageList = ({ navigation }) => {
             imgUrl={img.imgUrl}
             date={img.date}
             navigation={navigation}
+            onPress={() => handleClick(img.imgUrl)}
           />
         ))}
       </ScrollView>

@@ -4,9 +4,9 @@ import { Avatar, Button, Card, Text } from "react-native-paper";
 
 const LeftContent = (props) => <Avatar.Icon {...props} icon='folder' />;
 
-const ImageCard = ({ imgUrl, date }) => {
+const ImageCard = ({ onPress, imgUrl, date }) => {
   return (
-    <Card>
+    <Card onPress={onPress}>
       <Card.Content>
         <Text variant=''>{new Date().toLocaleString()}</Text>
       </Card.Content>

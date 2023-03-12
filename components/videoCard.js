@@ -9,14 +9,8 @@ import { Avatar, Button, Card, Portal, Text, Modal } from "react-native-paper";
 
 // const hideModal = () => setVisible(false);
 
-
 const VideoCard = ({ imgUrl, date }) => {
-
   const [visible, setVisible] = React.useState(false);
-
-  const showModal = () => setVisible(true);
-
-  const hideModal = () => setVisible(false);
 
   const shareData = async () => {
     try {
