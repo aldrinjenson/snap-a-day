@@ -15,14 +15,14 @@ const Signin = ({ navigation }) => {
     console.log(data);
     if (data) {
       console.log("Success");
-      navigation.navigate("camera");
+      navigation.navigate("images");
     } else {
       console.log("error in logging in");
       console.log(error);
     }
   };
   return (
-    <SafeAreaView style={{ paddingTop: '8%', paddingHorizontal: '3%' }}>
+    <SafeAreaView style={{ paddingTop: "8%", paddingHorizontal: "3%" }}>
       <Text variant='displayLarge'>Sign In</Text>
       <TextInput
         label='Email'
@@ -36,10 +36,12 @@ const Signin = ({ navigation }) => {
         onChangeText={(e) => setPassword(e)}
         right={<TextInput.Icon icon='eye' />}
       />
-      <Button icon='login' mode='contained' style={{}} onPress={handleLogin}>
-        Press me
+      <Button icon='login' mode='contained' onPress={handleLogin}>
+        Login
       </Button>
-      <Text onPress={() => navigation.navigate('signup')}>New User? Create an account here</Text>
+      <Text onPress={() => navigation.navigate("signup")}>
+        New User? Create an account here
+      </Text>
     </SafeAreaView>
   );
 };
