@@ -7,13 +7,12 @@ import {
 } from "react-native-paper";
 import SignUp from "./screens/signup";
 import LandingScreen from "./screens/LandingScreen";
-
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import ImageList from "./screens/ImageList";
 import HomeScreen from "./screens/HomeScreen";
 import VideoScreen from "./screens/VideoScreen";
-
+import CameraScreen from "./screens/CameraScreen";
 const Stack = createNativeStackNavigator();
 
 const theme = {
@@ -31,12 +30,22 @@ export default function App() {
       <NavigationContainer>
         <Stack.Navigator>
           <Stack.Screen
+            options={{ title: "Sign In" }}
+            name='sigin'
+            component={Signin}
+          />
+          <Stack.Screen
+            options={{ title: "Sign Up" }}
+            name='signup'
+            component={SignUp}
+          />
+          <Stack.Screen
             options={{ title: "Snap-A-Day" }}
             name='images'
             component={ImageList}
           />
           <Stack.Screen name='home' component={HomeScreen} />
-          <Stack.Screen name='sigin' component={Signin} />
+          <Stack.Screen name='video' component={VideoScreen} />
           <Stack.Screen name='camera' component={CameraScreen} />
 
         </Stack.Navigator>
