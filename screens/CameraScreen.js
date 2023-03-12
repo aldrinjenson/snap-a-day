@@ -47,13 +47,13 @@ const CameraScreen = () => {
           .upload(fileName, data.uri);
 
         console.log("response = " + response);
+        console.log(response);
 
         // Get the URL of the uploaded photo
-        const { publicURL } = await supabase.storage
+        const { publicURL } = supabase.storage
           .from("snaps-bucket")
           .getPublicUrl(fileName);
-
-        console.log(publicURL);
+        console.log({ publicURL });
 
         // setImage(publicURL);
       } catch (e) {

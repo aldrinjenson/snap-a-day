@@ -30,10 +30,10 @@ export default function App() {
     <PaperProvider theme={theme}>
       <NavigationContainer>
         <Stack.Navigator>
+          <Stack.Screen name='images' component={ImageList} />
+          <Stack.Screen name='home' component={HomeScreen} />
           <Stack.Screen name='sigin' component={Signin} />
           <Stack.Screen name='camera' component={CameraScreen} />
-          <Stack.Screen name='home' component={HomeScreen} />
-          <Stack.Screen name='images' component={ImageList} />
         </Stack.Navigator>
       </NavigationContainer>
     </PaperProvider>
