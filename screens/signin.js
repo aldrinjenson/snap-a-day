@@ -5,7 +5,7 @@ import { supabase } from "../utils";
 
 const Signin = () => {
   const [email, setEmail] = useState("aldrinjenson@gmail.com");
-  const [password, setPassword] = useState("");
+  const [password, setPassword] = useState("123456");
 
   const handleLogin = async () => {
     const { data, error } = await supabase.auth.signInWithPassword({

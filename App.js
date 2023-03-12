@@ -5,8 +5,9 @@ import {
   MD3LightTheme as DefaultTheme,
   Provider as PaperProvider,
 } from "react-native-paper";
-import "react-native-url-polyfill/auto";
 import SignUp from "./screens/signup";
+import LandingScreen from "./screens/LandingScreen";
+import CameraScreen from "./screens/CameraScreen";
 
 const theme = {
   ...DefaultTheme,
@@ -20,7 +21,9 @@ const theme = {
 export default function App() {
   return (
     <PaperProvider theme={theme}>
-      <Signin />
+      {/* <Signin /> */}
+      {/* <LandingScreen /> */}
+      <CameraScreen />
       {/* <SignUp /> */}
     </PaperProvider>
   );
