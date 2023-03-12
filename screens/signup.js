@@ -3,12 +3,16 @@ import { StyleSheet, View } from "react-native";
 import { Button, Text, TextInput } from "react-native-paper";
 import { supabase } from "../utils";
 
-const Signin = () => {
-  const [email, setEmail] = useState("aldrinjenson@gmail.com");
-  const [password, setPassword] = useState("123456");
+const SignUp = () => {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
 
-  const handleLogin = async () => {
-    const { data, error } = await supabase.auth.signInWithPassword({
+  const handleSignup = async () => {
+    if (password !== confirmPassword) {
+      console.log("Passwords don't match bro!");
+    }
+    const { data, error } = await supabase.auth.signUp({
       email,
       password,
     });
@@ -16,13 +20,14 @@ const Signin = () => {
     if (data) {
       console.log("Success");
     } else {
-      console.log("error in logging in");
+      console.log("error in Signing up");
       console.log(error);
     }
   };
+
   return (
     <View>
-      <Text variant='displayLarge'>Sign In</Text>
+      <Text variant='displayLarge'>Sign Up</Text>
       <TextInput
         label='Email'
         value={email}
@@ -35,7 +40,14 @@ const Signin = () => {
         onChangeText={(e) => setPassword(e)}
         right={<TextInput.Icon icon='eye' />}
       />
-      <Button icon='login' mode='contained' onPress={handleLogin}>
+      <TextInput
+        label='Confirm Password'
+        secureTextEntry
+        value={confirmPassword}
+        onChangeText={(e) => setConfirmPassword(e)}
+        right={<TextInput.Icon icon='eye' />}
+      />
+      <Button icon='login' mode='contained' onPress={handleSignup}>
         Press me
       </Button>
       <Text>New User? Create an account here</Text>
@@ -44,4 +56,4 @@ const Signin = () => {
 };
 
 const styles = StyleSheet.create({});
-export default Signin;
+export default SignUp;

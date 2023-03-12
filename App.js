@@ -5,6 +5,9 @@ import {
   MD3LightTheme as DefaultTheme,
   Provider as PaperProvider,
 } from "react-native-paper";
+import SignUp from "./screens/signup";
+import LandingScreen from "./screens/LandingScreen";
+import CameraScreen from "./screens/CameraScreen";
 
 
 import { NavigationContainer } from '@react-navigation/native';
