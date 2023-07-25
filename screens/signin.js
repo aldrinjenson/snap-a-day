@@ -23,12 +23,10 @@ const Signin = ({ navigation }) => {
   };
   return (
     <SafeAreaView style={{ paddingTop: "8%", paddingHorizontal: "3%" }}>
-      <View >
+      <View>
         <Text variant='displayLarge'>Snap-A-Day</Text>
-        <Image
-          style={styles.tinyLogo}
-          source={require('../assets/logo.png')}
-        />
+        <Text variant='displaySmall'>Track You Memories</Text>
+        <Image style={styles.tinyLogo} source={require("../assets/logo.png")} />
       </View>
       <TextInput
         label='Email'
@@ -42,10 +40,18 @@ const Signin = ({ navigation }) => {
         onChangeText={(e) => setPassword(e)}
         right={<TextInput.Icon icon='eye' />}
       />
-      <Button icon='login' mode='contained' style={{ marginTop: '3%', marginBottom: '3%' }} onPress={handleLogin}>
+      <Button
+        icon='login'
+        mode='contained'
+        style={{ marginTop: "3%", marginBottom: "3%" }}
+        onPress={handleLogin}
+      >
         Login
       </Button>
-      <Text style={{ color: 'blue' }} onPress={() => navigation.navigate("signup")}>
+      <Text
+        style={{ color: "blue" }}
+        onPress={() => navigation.navigate("signup")}
+      >
         New User? Create an account here
       </Text>
     </SafeAreaView>
@@ -56,9 +62,9 @@ const styles = StyleSheet.create({
   tinyLogo: {
     width: 150,
     height: 150,
-    marginTop: '10%',
-    marginBottom: '30%',
-    marginHorizontal: '30%'
+    marginTop: "10%",
+    marginBottom: "30%",
+    marginHorizontal: "30%",
   },
 });
 export default Signin;
